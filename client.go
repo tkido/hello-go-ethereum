@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 
@@ -18,5 +19,12 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("we have a connection to:", rpcURL)
+	fmt.Println("connected to", rpcURL)
+
+	header, err := client.HeaderByNumber(context.Background(), nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("Header is", header.Number.String())
 }

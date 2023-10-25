@@ -50,6 +50,8 @@ func Generate() error {
 	fmt.Println("Generate...")
 	sh.RunV("solc", "--abi", "--overwrite", "sol/Storage.sol", "-o", "abi")
 	sh.RunV("abigen", "--abi", "abi/Storage.abi", "--pkg", "storage", "--type", "Storage", "--out", "storage/storage.go")
+	sh.RunV("solc", "--bin", "--overwrite", "sol/Storage.sol", "-o", "bin")
+	sh.RunV("abigen", "--abi", "abi/Storage.abi", "--bin", "bin/Storage.bin", "--pkg", "storage", "--type", "Storage", "--out", "storage/storage.go")
 	return nil
 }
 

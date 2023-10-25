@@ -48,6 +48,8 @@ func Test() error {
 // Generate generate code
 func Generate() error {
 	fmt.Println("Generate...")
+	sh.RunV("solc", "--abi", "--overwrite", "sol/Storage.sol", "-o", "abi")
+	sh.RunV("abigen", "--abi", "abi/Storage.abi", "--pkg", "storage", "--type", "Storage", "--out", "storage/storage.go")
 	return nil
 }
 

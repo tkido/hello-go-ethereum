@@ -25,4 +25,15 @@ func checkBlock(x int64) {
 		log.Fatal(err)
 	}
 	fmt.Printf("TransactionCount %d\n\n", count) // 144
+
+	for _, tx := range block.Transactions() {
+		fmt.Println("tx.Hash()", tx.Hash().Hex())            // 0x5d49fcaa394c97ec8a9c3e7bd9e8388d420fb050a52083ca52ff24b3b65bc9c2
+		fmt.Println("tx.Value()", tx.Value().String())       // 10000000000000000
+		fmt.Println("tx.Gas()", tx.Gas())                    // 105000
+		fmt.Println("tx.GasPrice()", tx.GasPrice().Uint64()) // 102000000000
+		fmt.Println("tx.Nonce()", tx.Nonce())                // 110644
+		fmt.Println("tx.Data()", tx.Data())                  // []
+		fmt.Println("tx.To()", tx.To().Hex())                // 0x55fE59D8Ad77035154dDd0AD0388D09Dd4047A8e
+	}
+	fmt.Println()
 }

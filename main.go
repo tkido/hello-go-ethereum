@@ -1,9 +1,11 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 )
 
@@ -14,7 +16,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("we have a connection to:", rpcURL)
 
-	fmt.Println("we have a connection")
-	_ = client // we'll use this in the upcoming sections
+	account := common.HexToAddress("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266")
+	balance, err := client.BalanceAt(context.Background(), account, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(balance)
 }

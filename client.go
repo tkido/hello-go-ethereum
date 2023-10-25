@@ -6,20 +6,19 @@ import (
 	"log"
 
 	"github.com/ethereum/go-ethereum/ethclient"
+	"tkido.com/goeth/config"
 )
-
-const rpcURL = "http://localhost:8545"
 
 var client *ethclient.Client
 
 func init() {
 	fmt.Println("init")
 	var err error
-	client, err = ethclient.Dial(rpcURL)
+	client, err = ethclient.Dial(config.RpcURL)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("connected to", rpcURL)
+	fmt.Println("connected to", config.RpcURL)
 
 	header, err := client.HeaderByNumber(context.Background(), nil)
 	if err != nil {

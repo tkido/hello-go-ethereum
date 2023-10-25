@@ -24,5 +24,5 @@ func checkBlock(x int64) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("TransactionCount", count) // 144
+	fmt.Printf("TransactionCount %d\n\n", count) // 144
 }

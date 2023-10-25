@@ -14,5 +14,5 @@ func balance(s string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%s's balance is %d\n", s, balance)
+	fmt.Printf("%s's balance is %d\n\n", s, balance)
 }

@@ -26,5 +26,5 @@ func init() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Header is", header.Number.String())
+	fmt.Printf("Header is %s\n\n", header.Number.String())
 }
